@@ -6,15 +6,15 @@ pub enum Zero {}
 pub struct Succ<N: Natural>(N);
 
 pub trait Natural {
-    fn toUsize() -> usize;
+    fn to_usize() -> usize;
 }
 
 impl Natural for Zero {
-    fn toUsize() -> usize { 0 }
+    fn to_usize() -> usize { 0 }
 }
 
 impl<N: Natural> Natural for Succ<N> {
-    fn toUsize() -> usize { 1+N::toUsize() }
+    fn to_usize() -> usize { 1+N::to_usize() }
 }
 
 impl<N: Natural> Add<N> for Zero {
