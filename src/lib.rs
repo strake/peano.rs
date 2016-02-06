@@ -2,8 +2,12 @@
 
 use core::ops::*;
 
-pub enum Zero {}
-pub struct Succ<N: Natural>(N);
+#[derive(Copy)] pub enum Zero {}
+#[derive(Clone, Copy)] pub struct Succ<N: Natural>(N);
+
+impl Clone for Zero {
+    fn clone(&self) -> Self { match *self {} }
+}
 
 pub trait Natural {
     fn to_usize() -> usize;
