@@ -10,15 +10,15 @@ impl Clone for Zero {
 }
 
 pub trait Natural {
-    fn to_usize() -> usize;
+    const as_usize: usize;
 }
 
 impl Natural for Zero {
-    fn to_usize() -> usize { 0 }
+    const as_usize: usize = 0;
 }
 
 impl<N: Natural> Natural for Succ<N> {
-    fn to_usize() -> usize { 1+N::to_usize() }
+    const as_usize: usize = 1 + N::as_usize;
 }
 
 impl<N: Natural> Add<N> for Zero {
